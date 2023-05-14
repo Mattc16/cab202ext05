@@ -33,6 +33,10 @@
  * code locally. You should not write any code in main.c
  * as it will be replaced when you upload your programme.
  */ 
+
+// my combo:  A = 1, B = 3, C = 1, D = 8, E = 5, F = 4
+// f1 = 2AB0 = 2130, f2 = 4CD0 = 4180 
+// t1 = 3E0 = 350, t2 = 6F0 = 640 
 #include <stdio.h>
 #include <util/delay.h>
 #include <avr/io.h>
@@ -40,14 +44,14 @@
 volatile uint8_t state = 0;
 ISR(TCA0_OVF_vect) {
     if (state == 0) {
-        TCA0.SINGLE.PERBUF = 2110;
-        TCA0.SINGLE.CMP0BUF = 1055;
-        _delay_ms(480);
+        TCA0.SINGLE.PERBUF = 2130;
+        TCA0.SINGLE.CMP0BUF = 1065;
+        _delay_ms(350);
         state = 1;
     } else {
-        TCA0.SINGLE.PERBUF = 4350;
-        TCA0.SINGLE.CMP0BUF = 2175;
-        _delay_ms(960);
+        TCA0.SINGLE.PERBUF = 4180;
+        TCA0.SINGLE.CMP0BUF = 2090;
+        _delay_ms(640);
         state = 0;
     }
     TCA0.SINGLE.INTFLAGS = TCA_SINGLE_OVF_bm;
