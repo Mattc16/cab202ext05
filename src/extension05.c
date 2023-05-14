@@ -45,12 +45,12 @@ volatile uint8_t state = 0;
 ISR(TCA0_OVF_vect) {
     if (state == 0) {
         TCA0.SINGLE.PERBUF = 1564;
-        TCA0.SINGLE.CMP0BUF = 3127;
+        TCA0.SINGLE.CMP0BUF = 782;
         _delay_ms(350);
         state = 1;
     } else {
         TCA0.SINGLE.PERBUF = 797;
-        TCA0.SINGLE.CMP0BUF = 1694;
+        TCA0.SINGLE.CMP0BUF = 399;
         _delay_ms(640);
         state = 0;
     }
