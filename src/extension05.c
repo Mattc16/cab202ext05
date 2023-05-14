@@ -44,13 +44,13 @@
 volatile uint8_t state = 0;
 ISR(TCA0_OVF_vect) {
     if (state == 0) {
-        TCA0.SINGLE.PERBUF = 2130;
-        TCA0.SINGLE.CMP0BUF = 1065;
+        TCA0.SINGLE.PERBUF = 1564;
+        TCA0.SINGLE.CMP0BUF = 3127;
         _delay_ms(350);
         state = 1;
     } else {
-        TCA0.SINGLE.PERBUF = 4180;
-        TCA0.SINGLE.CMP0BUF = 2090;
+        TCA0.SINGLE.PERBUF = 797;
+        TCA0.SINGLE.CMP0BUF = 1594;
         _delay_ms(640);
         state = 0;
     }
@@ -60,8 +60,8 @@ void init() {
     cli();
     PORTB.DIR |= PIN0_bm;
     TCA0.SINGLE.CTRLB = TCA_SINGLE_WGMODE_SINGLESLOPE_gc | TCA_SINGLE_CMP0EN_bm;
-    TCA0.SINGLE.CMP0 = 774;
-    TCA0.SINGLE.PER = 387;
+    TCA0.SINGLE.CMP0 = 782;
+    TCA0.SINGLE.PER = 1564;
     TCA0.SINGLE.INTCTRL |= TCA_SINGLE_OVF_bm;
     TCA0.SINGLE.CTRLA = TCA_SINGLE_CLKSEL_DIV1_gc | TCA_SINGLE_ENABLE_bm;
     sei();
